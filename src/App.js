@@ -22,15 +22,13 @@ function App() {
     setTodo([...todoArr, todo]);
   }
   
-  const removeFromTodoArr = (todo) => {
-    const todoIdx = todoArr.findIndex(each => each === todo);
-    todoArr.splice(todoIdx, 1);
+  const removeFromTodoArr = (idx) => {
+    todoArr.splice(idx, 1);
     setTodo([...todoArr]);
   }
 
-  const markTodoAsDone = (todo) => {
-    const todoIdx = todoArr.findIndex(each => each === todo);
-    todoArr[todoIdx].done = !todoArr[todoIdx].done;
+  const markTodoAsDone = (idx) => {
+    todoArr[idx].done = !todoArr[idx].done;
     setTodo([...todoArr]);
   }
 
@@ -40,7 +38,7 @@ function App() {
         {todoArr.map((todo, idx) => {
           return (
             <li key={idx}>
-              <Todo todo={todo} removeFromTodoArr={removeFromTodoArr} markTodoAsDone={markTodoAsDone} />
+              <Todo todo={todo} idx={idx} removeFromTodoArr={removeFromTodoArr} markTodoAsDone={markTodoAsDone} />
             </li>
           )
         })}
